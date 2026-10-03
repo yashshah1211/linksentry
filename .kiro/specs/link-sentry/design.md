@@ -171,9 +171,9 @@ def normalize(raw_url: str) -> Union[str, NormalizerError]:
     """
 ```
 
-**Algorithm (using `urllib.parse.urlparse`):**
+**Algorithm (using `urllib.parse.urlsplit`):**
 
-1. Parse with `urlparse`. If `scheme` is empty or `netloc` is empty, return `NormalizerError`.
+1. Parse with `urlsplit`. If `scheme` is empty or `netloc` is empty, return `NormalizerError`.
 2. If `scheme` not in `{'http', 'https'}`, return `NormalizerError`.
 3. Lowercase `scheme` and split `netloc` into `host:port`.
 4. Lowercase `host`.
@@ -182,7 +182,9 @@ def normalize(raw_url: str) -> Union[str, NormalizerError]:
    - If empty, set to `/`.
    - If not `/`, strip trailing `/` characters.
    - Apply percent-encoding normalization via a regex that replaces `%xx` sequences: decode unreserved chars, uppercase hex digits for all others.
-7. Reassemble with `urlunparse`.
+7. Reassemble with `urlunsplit`.
+
+> **Note:** `urlsplit`/`urlunsplit` are used instead of `urlparse`/`urlunparse` to avoid the `params` component that `urlparse` splits out on semicolons in the path. That split caused a normalization idempotence failure discovered by Hypothesis (Property 2), where a second call to `normalize()` would reinsert the `;` separator and produce a different string. `urlsplit` treats the URL as a five-component tuple with no `params`, eliminating the issue.
 
 ### 3. Deduplicator (`linksentry/deduplicator.py`)
 

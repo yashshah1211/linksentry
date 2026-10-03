@@ -33,7 +33,7 @@ Implement LinkSentry as a self-contained Flask web application that accepts Mark
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 8.3_
 
   - [ ] 3.3 Implement `normalize()` in `linksentry/normalizer.py`
-    - Use `urllib.parse.urlparse`/`urlunparse`; apply canonical-form rules in order: lowercase scheme and host, strip default port (80/http, 443/https), set empty path to `/`, strip trailing slashes from non-root paths, normalize percent-encoding (uppercase hex, decode unreserved chars)
+    - Use `urllib.parse.urlsplit`/`urlunsplit`; apply canonical-form rules in order: lowercase scheme and host, strip default port (80/http, 443/https), set empty path to `/`, strip trailing slashes from non-root paths, normalize percent-encoding (uppercase hex, decode unreserved chars). Use `urlsplit`/`urlunsplit` (not `urlparse`/`urlunparse`) to avoid the `params` component that causes idempotence failures on URLs containing semicolons.
     - Return `NormalizerError` dataclass for missing/non-http(s) scheme, empty host, or unparseable input
     - Preserve query string and fragment unchanged
     - No imports of any HTTP client, socket, or OS networking API
