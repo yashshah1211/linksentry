@@ -42,6 +42,12 @@
     {% if no_links is defined and no_links %}
       <section class="results-section">
         <p class="message message--info">No HTTP/HTTPS links were found in the submitted text.</p>
+        <div class="summary" role="region" aria-label="Results summary">
+          <span class="summary__total">0 links checked</span>
+          <span class="summary__healthy">✓ 0 Healthy</span>
+          <span class="summary__redirect">↪ 0 Redirect</span>
+          <span class="summary__broken">✗ 0 Broken</span>
+        </div>
         <table class="results-table">
           <thead>
             <tr>

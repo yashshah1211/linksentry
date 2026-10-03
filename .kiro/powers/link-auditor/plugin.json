@@ -1,0 +1,17 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "linksentry-link-auditor",
+  "version": "1.0.0",
+  "description": "Project-specific guidance for reviewing and maintaining LinkSentry's Markdown link auditing pipeline.",
+  "author": {
+    "name": "LinkSentry"
+  },
+  "keywords": [
+    "linksentry",
+    "link audit",
+    "markdown links",
+    "broken links",
+    "url checker"
+  ],
+  "license": "MIT"
+}

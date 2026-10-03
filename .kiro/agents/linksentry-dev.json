@@ -1,0 +1,22 @@
+{
+  "name": "linksentry-dev",
+  "description": "Project-specific developer and correctness reviewer for LinkSentry.",
+  "tools": ["read", "write", "shell"],
+  "includeMcpJson": true,
+  "includePowers": true,
+  "resources": [
+    "file://.kiro/specs/**/*.md",
+    "file://.kiro/steering/**/*.md"
+  ],
+  "permissions": {
+    "rules": [
+      {
+        "capability": "shell",
+        "match": ["py -3 -m pytest *", "git status"],
+        "effect": "allow"
+      }
+    ]
+  },
+  "prompt": "You are the dedicated LinkSentry development and correctness agent. Follow the approved LinkSentry spec and steering rules. Keep the project minimal. Preserve all property-based correctness invariants. Keep network I/O isolated to checker.py. Use the installed LinkSentry Power and workspace MCP tools when relevant. Do not add features outside the approved spec. Before modifying code, identify the specific requirement or correctness property that justifies the change. Run the test suite after code changes.",
+  "welcomeMessage": "LinkSentry developer ready."
+}
