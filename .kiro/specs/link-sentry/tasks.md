@@ -81,8 +81,8 @@ Implement LinkSentry as a self-contained Flask web application that accepts Mark
 - [ ] 7. Checkpoint — verify scaffolding and pure-logic components
   - Ensure all stub and implementation files are in place, imports resolve, and `python -m pytest tests/ -k "not checker and not app" --tb=short` passes without network access. Ask the user if any questions arise.
 
-- [ ] 8. Write unit and property tests for pure-logic components
-  - [ ] 8.1 Create `tests/conftest.py` with socket-blocking fixture
+- [x] 8. Write unit and property tests for pure-logic components
+  - [x] 8.1 Create `tests/conftest.py` with socket-blocking fixture
     - Define `block_network` as an `autouse=True` session-scoped fixture that monkeypatches `socket.socket` to raise `RuntimeError("Network access is forbidden in unit tests")`
     - _Requirements: 8.6_
 
@@ -90,7 +90,7 @@ Implement LinkSentry as a self-contained Flask web application that accepts Mark
     - Cover: 200, 204, 299, 300, 301, 399, 400, 404, 500, 599, `None`, 100, 199, 600, non-integer (string, float)
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-  - [ ]* 8.3 Write property test for Classifier (Property 5) in `tests/test_classifier.py`
+  - [x] 8.3 Write property test for Classifier (Property 5) in `tests/test_classifier.py`
     - **Property 5: Deterministic Health Classification**
     - Use `@given(st.one_of(st.integers(), st.none(), st.text(), st.floats()))` with `@settings(max_examples=200)`; assert `classify(s) == classify(s)`
     - **Validates: Requirements 6.1, 6.2, 6.3, 6.4, 6.5**
@@ -99,12 +99,12 @@ Implement LinkSentry as a self-contained Flask web application that accepts Mark
     - Cover: empty list, single element, no duplicates, all duplicates, first-occurrence order preserved, case-sensitive comparison (different capitalizations kept as distinct entries)
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-  - [ ]* 8.5 Write property test for Deduplication Idempotence (Property 3) in `tests/test_deduplicator.py`
+  - [x] 8.5 Write property test for Deduplication Idempotence (Property 3) in `tests/test_deduplicator.py`
     - **Property 3: Deduplication Idempotence**
     - Use `@given(st.lists(st.text()))` with `@settings(max_examples=200)`; assert `deduplicate(deduplicate(L)) == deduplicate(L)`
     - **Validates: Requirements 4.1, 4.2, 4.3**
 
-  - [ ]* 8.6 Write property test for No Duplicate Output (Property 4) in `tests/test_deduplicator.py`
+  - [x] 8.6 Write property test for No Duplicate Output (Property 4) in `tests/test_deduplicator.py`
     - **Property 4: No Duplicate Output**
     - Use `@given(st.lists(st.text()))` with `@settings(max_examples=200)`; assert `len(result) == len(set(result))`
     - **Validates: Requirements 4.1, 4.2, 7.9**
@@ -113,7 +113,7 @@ Implement LinkSentry as a self-contained Flask web application that accepts Mark
     - Cover: scheme lowercasing, host lowercasing, default port removal (80/http, 443/https), non-default port preserved, empty path → `/`, trailing slash removal on non-root path, percent-encoding normalization (uppercase hex, decode unreserved), query and fragment preserved, invalid URL → `NormalizerError`
     - _Requirements: 3.1–3.10_
 
-  - [ ]* 8.8 Write property test for Normalization Idempotence (Property 2) in `tests/test_normalizer.py`
+  - [x] 8.8 Write property test for Normalization Idempotence (Property 2) in `tests/test_normalizer.py`
     - **Property 2: Normalization Idempotence**
     - Implement `valid_url_strategy()` custom Hypothesis strategy composing scheme + host + optional path/query/fragment; use `@given(valid_url_strategy())` with `@settings(max_examples=200)`; skip (return) when first `normalize()` returns `NormalizerError`; assert `normalize(normalize(u)) == normalize(u)`
     - **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.9**
@@ -122,7 +122,7 @@ Implement LinkSentry as a self-contained Flask web application that accepts Mark
     - Cover: inline links with and without title, reference links (matched and unmatched), autolinks, bare URLs, trailing-punctuation stripping (`.`, `,`, `)`, `]`, `!`, `?`, `;`, `:`), scheme filtering (mailto, ftp, file, scheme-relative `//`), empty input, input with no HTTP/HTTPS URLs, first-appearance order
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
 
-  - [ ]* 8.10 Write property test for Extraction Purity (Property 1) in `tests/test_extractor.py`
+  - [x] 8.10 Write property test for Extraction Purity (Property 1) in `tests/test_extractor.py`
     - **Property 1: Extraction Purity**
     - Use `@given(st.text())` with `@settings(max_examples=200)`; for each URL in `extract(markdown_input)`, assert `url.lower().startswith("http://") or url.lower().startswith("https://")`
     - **Validates: Requirements 2.1, 2.4**

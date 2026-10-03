@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Run tests after Python changes",
+      "description": "Automatically run LinkSentry tests whenever Kiro modifies a Python file.",
+      "trigger": "PostFileSave",
+      "matcher": "\\.py$",
+      "action": {
+        "type": "command",
+        "command": "py -3 -m pytest tests/ -q"
+      }
+    }
+  ]
+}

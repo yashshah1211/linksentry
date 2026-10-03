@@ -1,0 +1,105 @@
+{
+  "pbtResults": {
+    "8.3 Write property test for Classifier (Property 5) in `tests/test_classifier.py`": {
+      "status": "passed",
+      "lastRunTimestamp": 1791014714129
+    },
+    "8.5 Write property test for Deduplication Idempotence (Property 3) in `tests/test_deduplicator.py`": {
+      "status": "passed",
+      "lastRunTimestamp": 1791014969485
+    },
+    "8.6 Write property test for No Duplicate Output (Property 4) in `tests/test_deduplicator.py`": {
+      "status": "passed",
+      "lastRunTimestamp": 1791015117501
+    },
+    "8.8 Write property test for Normalization Idempotence (Property 2) in `tests/test_normalizer.py`": {
+      "status": "passed",
+      "lastRunTimestamp": 1791015246105
+    },
+    "8.10 Write property test for Extraction Purity (Property 1) in `tests/test_extractor.py`": {
+      "status": "passed",
+      "lastRunTimestamp": 1791015877501
+    }
+  },
+  "executionHistory": {
+    "8.1 Create `tests/conftest.py` with socket-blocking fixture": [
+      {
+        "executionId": "c7b51964-eb91-4d96-a337-f6e9c7ad855e",
+        "chatSessionId": "sess_7ab4f3ba-763b-4353-9801-70e1f6d718b2",
+        "timestamp": 1791014534390
+      },
+      {
+        "executionId": "c7b51964-eb91-4d96-a337-f6e9c7ad855e",
+        "chatSessionId": "sess_7ab4f3ba-763b-4353-9801-70e1f6d718b2",
+        "timestamp": 1791014586213
+      }
+    ],
+    "8. Write unit and property tests for pure-logic components": [
+      {
+        "executionId": "c7b51964-eb91-4d96-a337-f6e9c7ad855e",
+        "chatSessionId": "sess_7ab4f3ba-763b-4353-9801-70e1f6d718b2",
+        "timestamp": 1791014586371
+      }
+    ],
+    "8.3 Write property test for Classifier (Property 5) in `tests/test_classifier.py`": [
+      {
+        "executionId": "cecdf31c-b116-41c8-a5ea-c83b2f945424",
+        "chatSessionId": "sess_ee72ac6a-c34a-4052-a83a-35eda4b796e3",
+        "timestamp": 1791014608616
+      },
+      {
+        "executionId": "cecdf31c-b116-41c8-a5ea-c83b2f945424",
+        "chatSessionId": "sess_ee72ac6a-c34a-4052-a83a-35eda4b796e3",
+        "timestamp": 1791014721731
+      }
+    ],
+    "8.5 Write property test for Deduplication Idempotence (Property 3) in `tests/test_deduplicator.py`": [
+      {
+        "executionId": "c5e54f3e-1167-4aca-963a-aa54641155fe",
+        "chatSessionId": "sess_44c507de-9f3d-4100-8176-79594f879152",
+        "timestamp": 1791014799410
+      },
+      {
+        "executionId": "c5e54f3e-1167-4aca-963a-aa54641155fe",
+        "chatSessionId": "sess_44c507de-9f3d-4100-8176-79594f879152",
+        "timestamp": 1791014978899
+      }
+    ],
+    "8.6 Write property test for No Duplicate Output (Property 4) in `tests/test_deduplicator.py`": [
+      {
+        "executionId": "a7140961-e23d-428b-bc9f-3218f44aa863",
+        "chatSessionId": "sess_2a5232e7-0132-4826-b31e-498982dcb84a",
+        "timestamp": 1791015082289
+      },
+      {
+        "executionId": "a7140961-e23d-428b-bc9f-3218f44aa863",
+        "chatSessionId": "sess_2a5232e7-0132-4826-b31e-498982dcb84a",
+        "timestamp": 1791015125121
+      }
+    ],
+    "8.8 Write property test for Normalization Idempotence (Property 2) in `tests/test_normalizer.py`": [
+      {
+        "executionId": "9bca60cc-e9d3-4bf5-960e-19ab7a23db8e",
+        "chatSessionId": "sess_8055a882-b6f1-48bb-8ab0-1f760750e2e7",
+        "timestamp": 1791015165370
+      },
+      {
+        "executionId": "9bca60cc-e9d3-4bf5-960e-19ab7a23db8e",
+        "chatSessionId": "sess_8055a882-b6f1-48bb-8ab0-1f760750e2e7",
+        "timestamp": 1791015262735
+      }
+    ],
+    "8.10 Write property test for Extraction Purity (Property 1) in `tests/test_extractor.py`": [
+      {
+        "executionId": "c037b73e-5d47-4b6e-80db-9a029a8ada84",
+        "chatSessionId": "sess_21ef90d4-7ee2-4b15-a647-9a8646575453",
+        "timestamp": 1791015838151
+      },
+      {
+        "executionId": "c037b73e-5d47-4b6e-80db-9a029a8ada84",
+        "chatSessionId": "sess_21ef90d4-7ee2-4b15-a647-9a8646575453",
+        "timestamp": 1791015885105
+      }
+    ]
+  }
+}

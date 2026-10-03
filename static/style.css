@@ -1,0 +1,144 @@
+﻿/* =========================================================
+   LinkSentry — style.css
+   Health indicators use BOTH color AND a text badge so the
+   table remains accessible to color-blind users (Req 7.6).
+   ========================================================= */
+
+/* ---- Reset / base ---------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: #f8f9fa;
+  color: #212529;
+  padding: 1.5rem;
+}
+
+/* ---- Layout ---------------------------------------------- */
+header { margin-bottom: 1.5rem; }
+h1     { font-size: 1.75rem; }
+.subtitle { color: #6c757d; margin-top: 0.25rem; }
+
+main { max-width: 960px; margin: 0 auto; }
+
+/* ---- Form ------------------------------------------------- */
+.form-section { margin-bottom: 2rem; }
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+textarea:focus {
+  outline: 2px solid #0d6efd;
+  outline-offset: 1px;
+}
+
+button[type="submit"] {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  background: #0d6efd;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button[type="submit"]:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+  background: #0b5ed7;
+}
+
+.loading {
+  margin-left: 0.75rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* ---- Messages -------------------------------------------- */
+.message {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.message--error { background: #f8d7da; color: #842029; border: 1px solid #f5c2c7; }
+.message--info  { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+
+/* ---- Summary counts -------------------------------------- */
+.summary {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.summary__total   { font-weight: 600; }
+.summary__healthy { color: #155724; }
+.summary__redirect{ color: #856404; }
+.summary__broken  { color: #721c24; }
+
+/* ---- Results table --------------------------------------- */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.results-table th,
+.results-table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #dee2e6;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.results-table thead th {
+  background: #e9ecef;
+  font-weight: 600;
+}
+
+.col-url { word-break: break-all; max-width: 420px; }
+.col-url a { color: inherit; }
+
+.col-status, .col-time { white-space: nowrap; }
+
+/* ---- Row-level health colour (colour + left border) ------ */
+.row--healthy  { background: #d4edda; border-left: 4px solid #28a745; }
+.row--redirect { background: #fff3cd; border-left: 4px solid #ffc107; }
+.row--broken   { background: #f8d7da; border-left: 4px solid #dc3545; }
+
+/* ---- Health badge (text label — colour-independent) ------- */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge--healthy  { background: #28a745; color: #fff; }
+.badge--redirect { background: #ffc107; color: #212529; }
+.badge--broken   { background: #dc3545; color: #fff; }

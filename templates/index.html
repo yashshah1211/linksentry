@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkSentry — Link Health Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>LinkSentry</h1>
+    <p class="subtitle">Paste Markdown text to check every HTTP/HTTPS link it contains.</p>
+  </header>
+
+  <main>
+    {# ------------------------------------------------------------------ #}
+    {# Input form                                                          #}
+    {# ------------------------------------------------------------------ #}
+    <section class="form-section">
+      <form id="check-form" method="post" action="/">
+        <label for="markdown_input">Markdown text</label>
+        <textarea
+          id="markdown_input"
+          name="markdown_input"
+          rows="10"
+          required
+          placeholder="Paste your Markdown here…"
+        >{{ markdown_input or '' }}</textarea>
+
+        {% if error %}
+          <p class="message message--error" role="alert">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" id="submit-btn">Check links</button>
+        <span id="loading" class="loading" hidden aria-live="polite">Checking links…</span>
+      </form>
+    </section>
+
+    {# ------------------------------------------------------------------ #}
+    {# Results                                                             #}
+    {# ------------------------------------------------------------------ #}
+    {% if no_links is defined and no_links %}
+      <section class="results-section">
+        <p class="message message--info">No HTTP/HTTPS links were found in the submitted text.</p>
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th scope="col">URL</th>
+              <th scope="col">Status Code</th>
+              <th scope="col">Response Time (ms)</th>
+              <th scope="col">Health</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    {% elif results is defined and results %}
+      <section class="results-section">
+        {# Summary counts #}
+        <div class="summary" role="region" aria-label="Results summary">
+          <span class="summary__total">{{ summary.total }} link{{ 's' if summary.total != 1 }} checked</span>
+          <span class="summary__healthy">✓ {{ summary.healthy }} Healthy</span>
+          <span class="summary__redirect">↪ {{ summary.redirect }} Redirect</span>
+          <span class="summary__broken">✗ {{ summary.broken }} Broken</span>
+        </div>
+
+        <table class="results-table">
+          <thead>
+            <tr>
+              <th scope="col">URL</th>
+              <th scope="col">Status Code</th>
+              <th scope="col">Response Time (ms)</th>
+              <th scope="col">Health</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for result in results %}
+            <tr class="row--{{ result.health_label.value | lower }}">
+              <td class="col-url">
+                <a href="{{ result.url }}" target="_blank" rel="noopener noreferrer">{{ result.url }}</a>
+              </td>
+              <td class="col-status">
+                {% if result.status_code is none %}—{% else %}{{ result.status_code }}{% endif %}
+              </td>
+              <td class="col-time">
+                {% if result.response_time_ms is none %}—{% else %}{{ result.response_time_ms }}{% endif %}
+              </td>
+              <td class="col-health">
+                {% if result.health_label.value == 'Healthy' %}
+                  <span class="badge badge--healthy" aria-label="Healthy">✓ Healthy</span>
+                {% elif result.health_label.value == 'Redirect' %}
+                  <span class="badge badge--redirect" aria-label="Redirect">↪ Redirect</span>
+                {% else %}
+                  <span class="badge badge--broken" aria-label="Broken">✗ Broken</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    {% endif %}
+  </main>
+
+  <script>
+    (function () {
+      var form = document.getElementById('check-form');
+      var btn  = document.getElementById('submit-btn');
+      var loading = document.getElementById('loading');
+
+      form.addEventListener('submit', function () {
+        btn.disabled = true;
+        loading.hidden = false;
+      });
+    })();
+  </script>
+</body>
+</html>
