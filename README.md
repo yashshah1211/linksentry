@@ -10,7 +10,7 @@ Built entirely with [Kiro](https://kiro.dev) for the **Kiro University Challenge
 
 ## Demo
 
-**Demo video:** Coming soon
+**Demo video:** https://drive.google.com/file/d/1a1DSQ1sHv-0sHAZkVCp2DO_z-yB3aPNO/view?usp=drive_link
 
 ---
 
